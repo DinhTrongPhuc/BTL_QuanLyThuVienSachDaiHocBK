@@ -1,0 +1,26 @@
+@model BTL_NMCNPM_Nhom7.Models.Sach
+@{ Layout = null; } 
+
+<form asp-action="Edit" id="editForm">
+    <input type="hidden" asp-for="MaSach" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @* Nội dung form 2 cột như đã thiết kế *@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3"><label asp-for="TenSach" class="control-label">Tên sách</label><input asp-for="TenSach" class="form-control" /><span asp-validation-for="TenSach" class="text-danger"></span></div>
+            <div class="form-group mb-3"><label asp-for="MaTacGia" class="control-label">Tác giả</label><select asp-for="MaTacGia" class="form-control" asp-items="ViewBag.MaTacGia"></select></div>
+            <div class="form-group mb-3"><label asp-for="MaTheLoai" class="control-label">Thể loại</label><select asp-for="MaTheLoai" class="form-control" asp-items="ViewBag.MaTheLoai"></select></div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3"><label asp-for="NamXuatBan" class="control-label">Năm xuất bản</label><input asp-for="NamXuatBan" class="form-control" /></div>
+            <div class="form-group mb-3"><label asp-for="SoLuong" class="control-label">Số lượng</label><input asp-for="SoLuong" class="form-control" /></div>
+        </div>
+    </div>
+    <div class="form-group mb-3"><label asp-for="MoTa" class="control-label">Mô tả</label><textarea asp-for="MoTa" class="form-control" rows="3"></textarea></div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+        <input type="submit" value="Lưu lại" class="btn btn-primary" />
+    </div>
+</form>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

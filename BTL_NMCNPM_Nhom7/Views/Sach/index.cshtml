@@ -1,0 +1,75 @@
+@model IEnumerable<BTL_NMCNPM_Nhom7.Models.Sach>
+@{ ViewData["Title"] = "Danh sách Sách"; }
+
+<h1>Danh sách Sách</h1>
+<p><a asp-action="Create" class="btn btn-primary">Thêm sách mới</a></p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Tên sách</th><th>Năm xuất bản</th><th>Số lượng</th><th>Tác giả</th><th>Thể loại</th><th style="width: 150px;">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TenSach)</td>
+                <td>@Html.DisplayFor(modelItem => item.NamXuatBan)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                <td>@(item.TacGia?.TenTacGia)</td>
+                <td>@(item.TheLoai?.TenTheLoai)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MaSach" class="btn btn-sm btn-outline-primary edit-button">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.MaSach" class="btn btn-sm btn-outline-info">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.MaSach" class="btn btn-sm btn-outline-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Sửa thông tin Sách</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+      <div class="modal-body"></div>
+  </div></div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // Mở modal
+            $('.edit-button').on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $('#editModal .modal-body').load(url, function () {
+                    $('#editModal').modal('show');
+                });
+            });
+
+            // Xử lý submit form
+            $('#editModal').delegate('#editForm', 'submit', function (e) {
+                e.preventDefault();
+                var form = $(this);
+                $.ajax({
+                    url: form.attr('action'),
+                    method: 'POST',
+                    data: form.serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            $('#editModal').modal('hide');
+                            alert('Cập nhật thành công!'); // Thông báo thành công
+                            location.reload(); // Tải lại trang
+                        } else {
+                            // Cập nhật lại body của modal với nội dung form có lỗi validation
+                            $('#editModal .modal-body').html(response);
+                        }
+                    },
+                    error: function () {
+                        alert('Đã xảy ra lỗi, vui lòng thử lại.'); // Thông báo thất bại
+                    }
+                });
+            });
+        });
+    </script>
+}
