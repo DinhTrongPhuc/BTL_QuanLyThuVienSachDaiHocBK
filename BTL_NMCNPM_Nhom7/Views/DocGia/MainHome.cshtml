@@ -1,0 +1,55 @@
+@model IEnumerable<YourProject.Models.DocGia>
+
+<div class="container mt-3">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <h2>Danh sách Độc Giả</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Thêm Độc Giả</a>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dg in Model)
+            {
+                <tr>
+                    <td>@dg.Id</td>
+                    <td>@dg.HoTen</td>
+                    <td>@dg.Email</td>
+                    <td>@dg.SoDienThoai</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@dg.Id" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@dg.Id" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Bạn có chắc muốn xóa?');"><i class="bi bi-trash"></i> Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        setTimeout(() => {
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('hide');
+            }
+        }, 3000); // 3 giây tự ẩn
+    </script>
+}
