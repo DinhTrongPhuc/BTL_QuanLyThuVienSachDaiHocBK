@@ -63,8 +63,11 @@ namespace BTL_NMCNPM_Nhom7.Controllers
             {
                 _context.Add(sach);
                 await _context.SaveChangesAsync();
+                 TempData["AlertMessage"] = "Thêm sách thành công!";
+
                 return RedirectToAction(nameof(Index));
             }
+            TempData["AlertMessage"] = "Thêm sách thất bại, vui lòng kiểm tra lại thông tin.";
             ViewData["MaTacGia"] = new SelectList(_context.TacGia, "MaTacGia", "TenTacGia", sach.MaTacGia);
             ViewData["MaTheLoai"] = new SelectList(_context.TheLoai, "MaTheLoai", "TenTheLoai", sach.MaTheLoai);
             return View(sach);

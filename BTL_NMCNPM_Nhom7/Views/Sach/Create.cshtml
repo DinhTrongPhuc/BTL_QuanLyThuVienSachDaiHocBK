@@ -1,0 +1,69 @@
+@model BTL_NMCNPM_Nhom7.Models.Sach
+
+@{
+    ViewData["Title"] = "Thêm sách mới";
+}
+
+<h1>Thêm sách mới</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="TenSach" class="control-label">Tên sách</label>
+                <input asp-for="TenSach" class="form-control" />
+                <span asp-validation-for="TenSach" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group mb-3">
+                        <label asp-for="MaTacGia" class="control-label">Tác giả</label>
+                        <select asp-for="MaTacGia" class="form-control" asp-items="ViewBag.MaTacGia">
+                            <option value="">-- Chọn Tác giả --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group mb-3">
+                        <label asp-for="MaTheLoai" class="control-label">Thể loại</label>
+                        <select asp-for="MaTheLoai" class="form-control" asp-items="ViewBag.MaTheLoai">
+                            <option value="">-- Chọn Thể loại --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group mb-3">
+                        <label asp-for="NamXuatBan" class="control-label">Năm xuất bản</label>
+                        <input asp-for="NamXuatBan" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                     <div class="form-group mb-3">
+                        <label asp-for="SoLuong" class="control-label">Số lượng</label>
+                        <input asp-for="SoLuong" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="MoTa" class="control-label">Mô tả</label>
+                <textarea asp-for="MoTa" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
