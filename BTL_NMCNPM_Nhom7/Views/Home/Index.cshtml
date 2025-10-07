@@ -1,8 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="card-container">
+    <div class="card">
+        <h3>📚 Sách</h3>
+        <h2>2,350</h2>
+    </div>
+    <div class="card">
+        <h3>👥 Độc Giả</h3>
+        <h2>1,200</h2>
+    </div>
+    <div class="card">
+        <h3>⏰ Đang mượn</h3>
+        <h2>320</h2>
+    </div>
 </div>
+
+<div class="chart">
+    <h3>Thống kê</h3>
+    <canvas id="statsChart"></canvas>
+</div>
+
+<script>
+    const ctx = document.getElementById('statsChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6'],
+            datasets: [{
+                label: 'Số lượng mượn',
+                data: [700, 850, 900, 720, 600, 650],
+                backgroundColor: '#1e73be'
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
