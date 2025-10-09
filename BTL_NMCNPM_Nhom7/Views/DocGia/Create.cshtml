@@ -14,14 +14,39 @@
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Email" class="form-label"></label>
-                    <input asp-for="Email" class="form-control" placeholder="Nhập email"/>
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <label asp-for="NgaySinh" class="form-label"></label>
+                    <input asp-for="NgaySinh" type="date" class="form-control"/>
+                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DiaChi" class="form-label"></label>
+                    <input asp-for="DiaChi" class="form-control" placeholder="Nhập địa chỉ"/>
+                    <span asp-validation-for="DiaChi" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="SoDienThoai" class="form-label"></label>
                     <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại"/>
+                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Nhập email"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TenDangNhap" class="form-label"></label>
+                    <input asp-for="TenDangNhap" class="form-control" placeholder="Nhập tên đăng nhập"/>
+                    <span asp-validation-for="TenDangNhap" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="MatKhau" class="form-label"></label>
+                    <input asp-for="MatKhau" type="password" class="form-control" placeholder="Nhập mật khẩu"/>
+                    <span asp-validation-for="MatKhau" class="text-danger"></span>
                 </div>
 
                 <div class="d-flex justify-content-between">
