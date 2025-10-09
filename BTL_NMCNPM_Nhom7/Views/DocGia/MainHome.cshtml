@@ -18,8 +18,11 @@
             <tr>
                 <th>ID</th>
                 <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
                 <th>Email</th>
                 <th>Số điện thoại</th>
+                <th>Tên đăng nhập</th>
                 <th>Hành động</th>
             </tr>
         </thead>
@@ -29,12 +32,19 @@
                 <tr>
                     <td>@dg.Id</td>
                     <td>@dg.HoTen</td>
+                    <td>@dg.NgaySinh?.ToString("dd/MM/yyyy")</td>
+                    <td>@dg.DiaChi</td>
                     <td>@dg.Email</td>
                     <td>@dg.SoDienThoai</td>
+                    <td>@dg.TenDangNhap</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@dg.Id" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Sửa</a>
+                        <a asp-action="Edit" asp-route-id="@dg.Id" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Sửa
+                        </a>
                         <a asp-action="Delete" asp-route-id="@dg.Id" class="btn btn-danger btn-sm"
-                           onclick="return confirm('Bạn có chắc muốn xóa?');"><i class="bi bi-trash"></i> Xóa</a>
+                           onclick="return confirm('Bạn có chắc muốn xóa?');">
+                            <i class="bi bi-trash"></i> Xóa
+                        </a>
                     </td>
                 </tr>
             }
