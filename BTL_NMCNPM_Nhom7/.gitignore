@@ -1,0 +1,25 @@
+# Visual Studio / .NET
+.vs/
+obj/
+bin/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
+*.ide
+*.dbmdl
+
+# Rider IDE
+.idea/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.cache
+
+# Visual Studio Code
+.vscode/
+
+# Th? m?c publish
+publish/
