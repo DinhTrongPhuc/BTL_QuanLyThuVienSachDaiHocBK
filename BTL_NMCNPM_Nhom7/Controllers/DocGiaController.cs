@@ -17,7 +17,7 @@ namespace YourProject.Controllers
         // GET: /DocGia/MainHome
         public async Task<IActionResult> MainHome()
         {
-            var danhSachDocGia = await _context.DocGias.ToListAsync();
+            var danhSachDocGia = await _context.DocGia.ToListAsync();
             return View(danhSachDocGia);
         }
 
@@ -34,7 +34,7 @@ namespace YourProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.DocGias.Add(docGia);
+                _context.DocGia.Add(docGia);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Độc giả đã được thêm thành công!";
                 return RedirectToAction("MainHome");
@@ -45,7 +45,7 @@ namespace YourProject.Controllers
         // GET: /DocGia/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var docGia = await _context.DocGias.FindAsync(id);
+            var docGia = await _context.DocGia.FindAsync(id);
             if (docGia == null) return NotFound();
             return View(docGia);
         }
@@ -70,10 +70,10 @@ namespace YourProject.Controllers
         // GET: /DocGia/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            var docGia = await _context.DocGias.FindAsync(id);
+            var docGia = await _context.DocGia.FindAsync(id);
             if (docGia != null)
             {
-                _context.DocGias.Remove(docGia);
+                _context.DocGia.Remove(docGia);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Độc giả đã được xóa thành công!";
             }
