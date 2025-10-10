@@ -1,4 +1,4 @@
-Create Database SQLQuery_QuanLyThuVien
+﻿Create Database SQLQuery_QuanLyThuVien
 go 
 use SQLQuery_QuanLyThuVien
 go
@@ -67,3 +67,33 @@ CREATE TABLE ChiTietPhieuMuon (
     FOREIGN KEY (MaPhieuMuon) REFERENCES PhieuMuon(MaPhieuMuon),
     FOREIGN KEY (MaSach) REFERENCES Sach(MaSach)
 );
+
+INSERT INTO TacGia (TenTacGia)
+VALUES
+    (N'Nguyễn Nhật Ánh'), 
+    (N'Paulo Coelho'),   
+    (N'Dale Carnegie'),  
+    (N'Stephen Hawking'),
+    (N'J.K. Rowling');   
+GO
+
+INSERT INTO TheLoai (TenTheLoai)
+VALUES
+    (N'Văn học thiếu nhi'), 
+    (N'Tiểu thuyết'),       
+    (N'Kỹ năng sống'),      
+    (N'Khoa học');          
+GO
+INSERT INTO Sach (TenSach, NamXuatBan, SoLuong, MoTa, MaTheLoai, MaTacGia)
+VALUES 
+    (N'Tôi thấy hoa vàng trên cỏ xanh', 2015, 20, N'Câu chuyện tuổi thơ ở một làng quê Việt Nam.', 1, 1),
+    (N'Nhà giả kim', 2017, 15, N'Hành trình của cậu bé chăn cừu Santiago.', 2, 2),
+    (N'Đắc nhân tâm', 2018, 30, N'Sách về nghệ thuật đối nhân xử thế.', 3, 3),
+    (N'Lược sử thời gian', 2010, 12, N'Từ Vụ Nổ Lớn đến các hố đen.', 4, 4),
+    (N'Harry Potter và Hòn đá Phù thủy', 2000, 25, N'Tập đầu tiên trong bộ truyện Harry Potter.', 2, 5),
+    (N'Cho tôi xin một vé đi tuổi thơ', 2010, 18, N'Tác phẩm nổi tiếng của Nguyễn Nhật Ánh.', 1, 1),
+    (N'Quẳng gánh lo đi và vui sống', 2019, 22, N'Cuốn sách giúp bạn vượt qua lo lắng.', 3, 3),
+    (N'Vũ trụ trong vỏ hạt dẻ', 2011, 8, N'Khám phá các lý thuyết vật lý hiện đại.', 4, 4),
+    (N'Harry Potter và Phòng chứa Bí mật', 2001, 23, N'Tập thứ hai trong bộ truyện Harry Potter.', 2, 5),
+    (N'Mắt biếc', 2016, 16, N'Một câu chuyện tình lãng mạn và buồn.', 2, 1);
+GO
