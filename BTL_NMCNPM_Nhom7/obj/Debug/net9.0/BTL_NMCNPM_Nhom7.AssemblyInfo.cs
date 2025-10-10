@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BTL_NMCNPM_Nhom7")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bc67cde8a2c181b364bc57aebc98f07e3248bce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0046cb0fbcb3829aadfb5d68f480acd541a85a78")]
 [assembly: System.Reflection.AssemblyProductAttribute("BTL_NMCNPM_Nhom7")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BTL_NMCNPM_Nhom7")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
