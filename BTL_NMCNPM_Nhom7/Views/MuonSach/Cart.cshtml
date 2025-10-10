@@ -1,0 +1,38 @@
+@model List<YourProject.Models.Sach>
+
+<div class="container mt-3">
+    <h2>Giỏ mượn</h2>
+
+    @if (!Model.Any())
+    {
+        <p>Giỏ mượn trống.</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-info">
+                <tr>
+                    <th>Tên sách</th>
+                    <th>Tác giả</th>
+                    <th>Thể loại</th>
+                    <th>Năm xuất bản</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.TenSach</td>
+                        <td>@s.TacGia?.TenTacGia</td>
+                        <td>@s.TheLoai?.TenTheLoai</td>
+                        <td>@s.NamXuatBan</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <form asp-action="ConfirmBorrow" method="post">
+            <button type="submit" class="btn btn-success">Xác nhận mượn sách</button>
+        </form>
+    }
+</div>

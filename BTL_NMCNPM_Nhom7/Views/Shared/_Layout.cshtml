@@ -37,10 +37,12 @@
 
     </div>
 
-    <div class="header">
-        <h3>@ViewData["Title"]</h3>
-        <div>👤 Admin</div>
-    </div>
+<div class="header d-flex justify-content-end align-items-center gap-2">
+    <span>👤 Chọn vai trò:</span>
+    <a asp-controller="DocGia" asp-action="MainHome" class="btn btn-primary btn-sm">Admin</a>
+    <a asp-controller="MuonSach" asp-action="Index" class="btn btn-secondary btn-sm">Guest</a>
+</div>
+
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
