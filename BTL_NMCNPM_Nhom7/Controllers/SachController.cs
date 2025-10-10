@@ -146,5 +146,43 @@ namespace YourProject.Controllers
         {
             return _context.Sach.Any(e => e.MaSach == id);
         }
+        // GET: Sach/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var sach = await _context.Sach
+                .Include(s => s.TacGia)
+                .Include(s => s.TheLoai)
+                .FirstOrDefaultAsync(m => m.MaSach == id);
+
+            if (sach == null)
+            {
+                return NotFound();
+            }
+
+            return View(sach);
+        }
+        // GET: Sach/Search
+        [HttpGet]
+        public async Task<IActionResult> Search(string term)
+        {
+            if (!string.IsNullOrEmpty(term))
+            {
+                var sachList = await _context.Sach
+                    .Where(s => s.TenSach.Contains(term))
+                    .Select(s => new { 
+                        label = s.TenSach,
+                        value = s.MaSach
+                    })
+                    .ToListAsync();
+                    
+                return Json(sachList);
+            }
+            return Json(new List<object>());
+        }
     }
 }
