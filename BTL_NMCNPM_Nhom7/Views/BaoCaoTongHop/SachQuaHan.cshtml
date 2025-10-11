@@ -1,0 +1,26 @@
+﻿@model IEnumerable<YourProject.Models.PhieuMuon>
+
+<h3>⏰ Danh sách sách quá hạn</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã Phiếu</th>
+            <th>Tên Sách</th>
+            <th>Độc Giả</th>
+            <th>Ngày Mượn</th>
+            <th>Hạn Trả</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.MaPhieuMuon</td>
+                <td>@((p.Sach as YourProject.Models.Sach)?.TenSach)</td>
+                <td>@p.DocGia.HoTen</td>
+                <td>@p.NgayMuon.ToShortDateString()</td>
+                <td class="text-danger">@p.HanTra.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
