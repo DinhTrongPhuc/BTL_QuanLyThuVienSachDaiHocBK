@@ -1,0 +1,45 @@
+@model IEnumerable<YourProject.Models.Sach>
+
+<div class="container mt-3">
+    <h2>Danh sách sách có thể mượn</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th>Tên sách</th>
+                <th>Tác giả</th>
+                <th>Thể loại</th>
+                <th>Năm xuất bản</th>
+                <th>Số lượng</th>
+                <th>Mô tả</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.TenSach</td>
+                    <td>@s.TacGia?.TenTacGia</td>
+                    <td>@s.TheLoai?.TenTheLoai</td>
+                    <td>@s.NamXuatBan</td>
+                    <td>@s.SoLuong</td>
+                    <td>@s.MoTa</td>
+                    <td>
+                        <form asp-action="AddToCart" method="post">
+                            <input type="hidden" name="maSach" value="@s.MaSach" />
+                            <button type="submit" class="btn btn-success btn-sm">Thêm vào giỏ</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Cart" class="btn btn-primary">Xem giỏ mượn</a>
+</div>

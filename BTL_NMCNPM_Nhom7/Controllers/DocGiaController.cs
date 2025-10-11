@@ -14,6 +14,22 @@ namespace YourProject.Controllers
             _context = context;
         }
 
+        //search
+        public IActionResult MainHome_search(string searchString)
+        {
+            var query = _context.DocGia.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query.Where(d => d.HoTen.Contains(searchString) || d.Email.Contains(searchString));
+            }
+
+            ViewData["SearchString"] = searchString;
+            var result = query.ToList();
+            return View(result);
+        }
+
+
         // GET: /DocGia/MainHome
         public async Task<IActionResult> MainHome()
         {
