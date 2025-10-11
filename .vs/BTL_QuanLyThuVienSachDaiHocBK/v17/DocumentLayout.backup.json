@@ -3,67 +3,20 @@
   "WorkspaceRootPath": "D:\\BTLNHOM7\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.305\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\controllers\\phieumuoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\controllers\\phieumuoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\phieumuon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\phieumuon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\phieumuon\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\phieumuon\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\controllers\\docgiacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\controllers\\docgiacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\data\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\data\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\controllers\\muonsachcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\controllers\\muonsachcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\sach\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\sach\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\sach\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\sach\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\views\\sach\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\views\\sach\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\controllers\\sachcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\controllers\\sachcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\migrations\\librarycontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\migrations\\librarycontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|d:\\btlnhom7\\btl_nmcnpm_nhom7\\helpers\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85269F9-F34A-C8D5-32CB-DE61D7CA45AD}|BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj|solutionrelative:btl_nmcnpm_nhom7\\helpers\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -89,196 +42,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Microsoft.PackageDependencyResolution.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AgIAAP0AAAAAAAAAAIAwwAkBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-10-10T14:31:24.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB4AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:25:58.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Index.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Index.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Index.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Index.cshtml",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAAAOIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:20:24.456Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Create.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Create.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Create.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\PhieuMuon\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:20:12.212Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:16:37.417Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\appsettings.json",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\appsettings.json",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\appsettings.json",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-10T13:05:03.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\_ViewImports.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:04:35.807Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Program.cs",
               "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Program.cs",
               "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Program.cs",
               "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAADwvyIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:02:51.885Z"
+              "WhenOpened": "2025-10-11T07:55:52.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-11T07:53:07.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MuonSachController.cs",
+              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\MuonSachController.cs",
+              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Controllers\\MuonSachController.cs",
+              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\MuonSachController.cs",
+              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Controllers\\MuonSachController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowEEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T07:51:14.217Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PhieuMuonController.cs",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\PhieuMuonController.cs",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Controllers\\PhieuMuonController.cs",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\PhieuMuonController.cs",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Controllers\\PhieuMuonController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAfAAAAAAAAAA==",
+              "Title": "SessionExtensions.cs",
+              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Helpers\\SessionExtensions.cs",
+              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Helpers\\SessionExtensions.cs",
+              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Helpers\\SessionExtensions.cs",
+              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Helpers\\SessionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:02:47.283Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LibraryContext.cs",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Data\\LibraryContext.cs",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Data\\LibraryContext.cs",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Data\\LibraryContext.cs",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Data\\LibraryContext.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:03:41.197Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DocGiaController.cs",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\DocGiaController.cs",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Controllers\\DocGiaController.cs",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\DocGiaController.cs",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Controllers\\DocGiaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:01:50.863Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "index.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Sach\\index.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\Sach\\index.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Sach\\index.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\Sach\\index.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:04:31.304Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Sach\\Edit.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\Sach\\Edit.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Sach\\Edit.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\Sach\\Edit.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAUAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:04:21.962Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Sach\\Create.cshtml",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Views\\Sach\\Create.cshtml",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Views\\Sach\\Create.cshtml",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Views\\Sach\\Create.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-10T13:04:10.701Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "SachController.cs",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\SachController.cs",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Controllers\\SachController.cs",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Controllers\\SachController.cs",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Controllers\\SachController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:03:55.897Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LibraryContextModelSnapshot.cs",
-              "DocumentMoniker": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Migrations\\LibraryContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "BTL_NMCNPM_Nhom7\\Migrations\\LibraryContextModelSnapshot.cs",
-              "ToolTip": "D:\\BTLNHOM7\\BTL_NMCNPM_Nhom7\\Migrations\\LibraryContextModelSnapshot.cs",
-              "RelativeToolTip": "BTL_NMCNPM_Nhom7\\Migrations\\LibraryContextModelSnapshot.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T13:03:46.857Z"
+              "WhenOpened": "2025-10-11T07:50:48.782Z"
             }
           ]
         }
