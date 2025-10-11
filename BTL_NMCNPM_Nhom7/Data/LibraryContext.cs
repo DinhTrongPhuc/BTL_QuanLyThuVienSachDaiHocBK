@@ -15,6 +15,8 @@ namespace YourProject.Data
         public DbSet<TheLoai> TheLoai { get; set; }
         public DbSet<TacGia> TacGia { get; set; }
         public DbSet<ThuThu> ThuThu { get; set; }
+        public object PhieuMuons { get; internal set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
