@@ -26,5 +26,8 @@ namespace YourProject.Models
         public ThuThu? ThuThu { get; set; }
 
         public ICollection<ChiTietPhieuMuon>? ChiTietPhieuMuons { get; set; }
+        public object Sach { get; internal set; }
+        public object NgayTra { get; internal set; }
+        public DateTime HanTra { get; internal set; }
     }
 }
