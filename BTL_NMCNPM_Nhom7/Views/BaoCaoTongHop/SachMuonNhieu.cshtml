@@ -1,0 +1,24 @@
+﻿@model IEnumerable<dynamic>
+
+<h3>Sách được mượn nhiều nhất</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên sách</th>
+            <th>Số lần mượn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenSach</td>
+                <td>@item.SoLanMuon</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-success" asp-action="ExportExcel" asp-route-type="SachMuonNhieu">
+    Xuất Excel
+</a>
