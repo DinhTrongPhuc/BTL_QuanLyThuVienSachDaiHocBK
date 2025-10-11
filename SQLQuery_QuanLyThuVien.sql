@@ -97,3 +97,11 @@ VALUES
     (N'Harry Potter và Phòng chứa Bí mật', 2001, 23, N'Tập thứ hai trong bộ truyện Harry Potter.', 2, 5),
     (N'Mắt biếc', 2016, 16, N'Một câu chuyện tình lãng mạn và buồn.', 2, 1);
 GO
+
+INSERT INTO DocGia (HoTen, NgaySinh, DiaChi, SoDienThoai, Email, TenDangNhap, MatKhau)
+VALUES
+('Nguyễn Văn A', '1995-05-12', 'Hà Nội', '0987654321', 'nguyenvana@example.com', 'nguyenvana', 'MatKhau123'),
+('Trần Thị B', '1998-08-20', 'Hồ Chí Minh', '0912345678', 'tranthib@example.com', 'tranthib', 'MatKhau123'),
+('Lê Thế C', '2000-01-15', 'Đà Nẵng', '0978123456', 'lethec@example.com', 'lethec', 'MatKhau123'),
+('Phạm Văn D', '1997-12-05', 'Hải Phòng', '0965432187', 'phamvand@example.com', 'phamvand', 'MatKhau123'),
+('Nguyễn Thị E', '1999-03-30', 'Cần Thơ', '0932165478', 'nguyenthie@example.com', 'nguyenthie', 'MatKhau123');
