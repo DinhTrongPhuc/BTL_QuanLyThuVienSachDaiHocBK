@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using YourProject.Models;
 using YourProject.Data;
+using YourProject.Helpers;
+using YourProject.Models;
 
 namespace YourProject.Controllers
 {
@@ -81,17 +82,24 @@ namespace YourProject.Controllers
 
 				_context.SaveChanges();
 
+				var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
+				if (cart != null)
+				{
+					cart.RemoveAll(s => maSachs.Contains(s.MaSach));
+					HttpContext.Session.SetObjectAsJson("Cart", cart); // Cập nhật lại giỏ
+				}
+
 				TempData["Message"] = "Tạo phiếu mượn thành công!";
-				return RedirectToAction("DanhSach");
+				return RedirectToAction("Index"); // Quay về danh sách yêu cầu
 			}
 			catch (Exception ex)
 			{
 				TempData["Error"] = "Lỗi khi tạo phiếu: " + ex.Message;
-				return RedirectToAction("Create");
+				return RedirectToAction("Index1");
 			}
 		}
 
-
+		
 		public IActionResult DanhSach()
 		{
 			var danhSach = _context.PhieuMuon
