@@ -24,8 +24,7 @@ var app = builder.Build();
 // Pipeline
 app.UseStaticFiles();
 app.UseRouting();
-
-app.UseSession();      // <--- PHẢI có
+app.UseSession();     
 app.UseAuthorization();
 
 app.MapControllerRoute(

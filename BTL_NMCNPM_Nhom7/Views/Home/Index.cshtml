@@ -1,27 +1,148 @@
 ﻿@{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "Dashboard - Quản lý Thư viện";
 }
 
-<div class="card-container">
-    <div class="card">
-        <h3>📚 Sách</h3>
-        <h2>2,350</h2>
+<!-- ==== DASHBOARD CONTENT ==== -->
+<div class="container-fluid mt-4">
+    <!-- Header Title -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary"><i class="bi bi-speedometer2"></i> Dashboard Tổng Quan</h2>
+        <span class="text-muted">Cập nhật lúc: @DateTime.Now.ToString("HH:mm - dd/MM/yyyy")</span>
     </div>
-    <div class="card">
-        <h3>👥 Độc Giả</h3>
-        <h2>1,200</h2>
+
+    <!-- ==== CARDS SECTION ==== -->
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-gradient bg-primary text-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6>📚 Tổng số Sách</h6>
+                        <h2>2,350</h2>
+                    </div>
+                    <i class="bi bi-book-half fs-1 opacity-75"></i>
+                </div>
+                <p class="mt-2 mb-0 small text-white-50">+5% so với tháng trước</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-gradient bg-success text-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6>👥 Độc Giả</h6>
+                        <h2>1,200</h2>
+                    </div>
+                    <i class="bi bi-people fs-1 opacity-75"></i>
+                </div>
+                <p class="mt-2 mb-0 small text-white-50">+2% tăng trưởng người dùng</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-gradient bg-warning text-dark">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6>⏰ Đang Mượn</h6>
+                        <h2>320</h2>
+                    </div>
+                    <i class="bi bi-clock-history fs-1 opacity-75"></i>
+                </div>
+                <p class="mt-2 mb-0 small text-dark-50">-3% so với tuần trước</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm p-3 bg-gradient bg-danger text-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6>⚠️ Trễ hạn</h6>
+                        <h2>45</h2>
+                    </div>
+                    <i class="bi bi-exclamation-triangle fs-1 opacity-75"></i>
+                </div>
+                <p class="mt-2 mb-0 small text-white-50">Tăng 10% so với tháng trước</p>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <h3>⏰ Đang mượn</h3>
-        <h2>320</h2>
+
+    <!-- ==== CHART SECTION ==== -->
+    <div class="row mt-5 g-4">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-bar-chart-line"></i> Thống kê lượng mượn sách (6 tháng gần nhất)</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="statsChart" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> Thông báo nhanh</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-bell"></i> Có <strong>5</strong> sách cần nhập thêm.</li>
+                        <li class="list-group-item"><i class="bi bi-person-plus"></i> 12 độc giả mới đăng ký hôm nay.</li>
+                        <li class="list-group-item"><i class="bi bi-bookmark-x"></i> 8 phiếu mượn trễ hạn cần xử lý.</li>
+                        <li class="list-group-item"><i class="bi bi-journal-check"></i> Hệ thống sao lưu tự động lúc 02:00 sáng.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==== RECENT BORROW SECTION ==== -->
+    <div class="card mt-5 shadow-sm border-0">
+        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="bi bi-clock"></i> Hoạt động mượn gần đây</h5>
+            <a href="#" class="btn btn-light btn-sm">Xem tất cả</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tên độc giả</th>
+                        <th>Tên sách</th>
+                        <th>Ngày mượn</th>
+                        <th>Ngày trả dự kiến</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nguyễn Văn A</td>
+                        <td>Lập Trình C# Cơ Bản</td>
+                        <td>05/10/2025</td>
+                        <td>20/10/2025</td>
+                        <td><span class="badge bg-success">Đang mượn</span></td>
+                    </tr>
+                    <tr>
+                        <td>Trần Thị B</td>
+                        <td>Database Systems</td>
+                        <td>28/09/2025</td>
+                        <td>10/10/2025</td>
+                        <td><span class="badge bg-danger">Trễ hạn</span></td>
+                    </tr>
+                    <tr>
+                        <td>Phạm Văn C</td>
+                        <td>Lập Trình Web ASP.NET</td>
+                        <td>03/10/2025</td>
+                        <td>18/10/2025</td>
+                        <td><span class="badge bg-warning text-dark">Sắp đến hạn</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
-<div class="chart">
-    <h3>Thống kê</h3>
-    <canvas id="statsChart"></canvas>
-</div>
-
+<!-- ==== CHART SCRIPT ==== -->
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const ctx = document.getElementById('statsChart');
     new Chart(ctx, {
@@ -31,13 +152,24 @@
             datasets: [{
                 label: 'Số lượng mượn',
                 data: [700, 850, 900, 720, 600, 650],
-                backgroundColor: '#1e73be'
+                backgroundColor: '#0d6efd',
+                borderRadius: 6
             }]
         },
         options: {
+            plugins: {
+                legend: { display: false }
+            },
             scales: {
                 y: { beginAtZero: true }
             }
         }
     });
 </script>
+
+<style>
+    .bg-light-blue {
+        background: linear-gradient(135deg, #4c84ff, #1e73be);
+    }
+</style>
+}
