@@ -1,0 +1,51 @@
+﻿@using YourProject.ViewModels
+@model List<ReaderCartViewModel>
+
+
+
+<h2>Danh sách yêu cầu mượn sách</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+<a asp-controller="PhieuMuon" asp-action="DanhSach" class="btn btn-success mb-3">
+    Danh sách phiếu mượn
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã đọc giả</th>
+            <th>Tên đọc giả</th>
+            <th>Sách mượn</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reader in Model)
+        {
+            <tr>
+                <td>@reader.MaDocGia</td>
+                <td>@reader.TenDocGia</td>
+                <td>
+                    @foreach (var sach in reader.SachMuon)
+                    {
+                        <div>@sach.TenSach</div>
+                    }
+                </td>
+                <td>
+                    <form asp-action="TaoPhieuMuon" method="post">
+                        <input type="hidden" name="maDocGia" value="@reader.MaDocGia" />
+                        <button><a asp-controller="PhieuMuon" asp-action="Create" asp-route-maDocGia="@reader.MaDocGia" class="btn btn-primary"></a>Tạo phiếu mượn</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

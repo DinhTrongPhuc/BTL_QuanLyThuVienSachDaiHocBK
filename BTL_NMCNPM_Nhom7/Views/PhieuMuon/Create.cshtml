@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Tạo Phiếu Mượn";
+    var docGias = ViewBag.DocGias as List<YourProject.Models.DocGia>;
+    var thuThus = ViewBag.ThuThus as List<YourProject.Models.ThuThu>;
+    var sachs = ViewBag.Sachs as List<YourProject.Models.Sach>;
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+    }
+
+    h2 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 25px;
+        max-width: 500px;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input, select, button {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background-color: #28a745;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+    .message {
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .success {
+        color: green;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+
+
+<h2>Tạo Phiếu Mượn</h2>
+
+@if (TempData["Message"] != null)
+{
+    <script>
+        alert('@TempData["Message"]');
+    </script>
+}
+@if (TempData["Error"] != null)
+{
+    <script>
+        alert('@TempData["Error"]');
+    </script>
+}
+
+<form method="post" asp-action="Create">
+    <div>
+        <label>Người mượn (Độc giả):</label>
+        <select name="MaDocGia" required>
+            <option value="">-- Chọn độc giả --</option>
+            @foreach (var dg in docGias)
+            {
+                <option value="@dg.Id">@dg.HoTen</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Thủ thư:</label>
+        <select name="MaThuThu" required>
+            <option value="">-- Chọn thủ thư --</option>
+            @foreach (var tt in thuThus)
+            {
+                <option value="@tt.MaThuThu">@tt.HoTen</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Ngày hẹn trả:</label>
+        <input type="date" name="NgayHenTra" required />
+    </div>
+
+    <div>
+        <label>Trạng thái phiếu:</label>
+        <select name="TrangThai" required>
+            <option value="Chưa trả">Chưa trả</option>
+            <option value="Đã trả">Đã trả</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Chọn sách (nhập mã sách, cách nhau dấu phẩy nếu nhiều):</label>
+        <input type="text" name="MaSachsInput" required placeholder="VD: 1,2,3" />
+    </div>
+
+    <button type="submit">Tạo Phiếu Mượn</button>
+</form>

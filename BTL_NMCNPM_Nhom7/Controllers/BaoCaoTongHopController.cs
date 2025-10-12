@@ -24,7 +24,7 @@ namespace BTL_NMCNPM_Nhom7.Controllers
         }
 
         // 1️⃣ Báo cáo Sách được mượn nhiều nhất
-        public async Task<IActionResult> SachMuonNhieu()
+    /*    public async Task<IActionResult> SachMuonNhieu()
         {
             var data = await _context.ChiTietPhieuMuon
                 .Include(c => c.Sach)
@@ -40,6 +40,7 @@ namespace BTL_NMCNPM_Nhom7.Controllers
 
             return View(data);
         }
+    
 
         // 2️⃣ Báo cáo Sách quá hạn
         public async Task<IActionResult> SachQuaHan()
@@ -81,6 +82,7 @@ namespace BTL_NMCNPM_Nhom7.Controllers
 
             return View(data);
         }
+      */
 
         // 4️⃣ Báo cáo Sách tồn kho
         public async Task<IActionResult> SachTonKho()
