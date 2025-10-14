@@ -1,12 +1,73 @@
 ﻿@{
     ViewData["Title"] = "Báo cáo tổng hợp";
 }
-<h2>Báo cáo tổng hợp</h2>
-<hr />
 
-<ul>
-    <li><a asp-action="SachMuonNhieu">📘 Sách được mượn nhiều nhất</a></li>
-    <li><a asp-action="SachQuaHan">⏰ Sách quá hạn</a></li>
-    <li><a asp-action="DocGiaQuaHan">👤 Độc giả quá hạn</a></li>
-    <li><a asp-action="SachTonKho">🏷️ Sách tồn kho</a></li>
-</ul>
+<style>
+    /* CSS để làm cho card có hiệu ứng khi di chuột qua */
+    .report-card {
+        transition: all 0.2s ease-in-out;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+    .report-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    /* Thêm màu sắc cho các biểu tượng */
+    .report-card .bi-graph-up-arrow { color: #0d6efd; }
+    .report-card .bi-clock-history { color: #dc3545; }
+    .report-card .bi-people-fill { color: #ffc107; }
+    .report-card .bi-box-seam { color: #198754; }
+</style>
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <a asp-action="SachMuonNhieu" asp-controller="Reports" class="card-link">
+            <div class="card h-100 text-center report-card">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                    <i class="bi bi-graph-up-arrow" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Sách mượn nhiều nhất</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <a asp-action="SachQuaHan" asp-controller="Reports" class="card-link">
+            <div class="card h-100 text-center report-card">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                    <i class="bi bi-clock-history" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Sách quá hạn</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <a asp-action="DocGiaQuaHan" asp-controller="Reports" class="card-link">
+            <div class="card h-100 text-center report-card">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                    <i class="bi bi-people-fill" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Độc giả quá hạn</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <a asp-action="SachTonKho" asp-controller="Reports" class="card-link">
+            <div class="card h-100 text-center report-card">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                    <i class="bi bi-box-seam" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Sách tồn kho</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

@@ -1020,3 +1020,11 @@ D:\BTLNHOM7\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\obj\Debug\net9.0\stat
 D:\BTLNHOM7\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\obj\Debug\net9.0\BTL_NMCN.4F0F6EAD.Up2Date
 D:\BTLNHOM7\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\obj\Debug\net9.0\BTL_NMCNPM_Nhom7.genruntimeconfig.cache
 D:\BTLNHOM7\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\obj\Debug\net9.0\ref\BTL_NMCNPM_Nhom7.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\ClosedXML.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\ClosedXML.Parser.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\DocumentFormat.OpenXml.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\DocumentFormat.OpenXml.Framework.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\ExcelNumberFormat.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\RBush.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\SixLabors.Fonts.dll
+C:\webQLTV\BTL_QuanLyThuVienSachDaiHocBK\BTL_NMCNPM_Nhom7\bin\Debug\net9.0\System.IO.Packaging.dll

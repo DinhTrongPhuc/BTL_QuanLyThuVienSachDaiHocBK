@@ -14,16 +14,35 @@ public class MuonSachController : Controller
         _context = context;
     }
 
-    // Trang danh sách sách để mượn
-    public IActionResult Index()
-    {
-        var sachList = _context.Sach
-            .Include(s => s.TacGia)
-            .Include(s => s.TheLoai)
-            .ToList();
+   // Trang danh sách sách để mượn (đã sửa)
+public async Task<IActionResult> Index(string searchString)
+{
+        // Lưu lại từ khóa tìm kiếm để hiển thị lại trên ô input
+    ViewData["CurrentFilter"] = searchString;
 
-        return View(sachList);
+    // Bắt đầu câu truy vấn, lấy sách và bao gồm cả Tác giả, Thể loại
+    var sachQuery = _context.Sach.Include(s => s.TacGia).Include(s => s.TheLoai).AsQueryable();
+
+    // Nếu có từ khóa tìm kiếm, thực hiện lọc
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        // Chuyển từ khóa về chữ thường để tìm kiếm không phân biệt hoa/thường
+        var keyword = searchString.ToLower();
+        
+        sachQuery = sachQuery.Where(s => 
+            s.TenSach.ToLower().Contains(keyword) || 
+            s.TacGia.TenTacGia.ToLower().Contains(keyword) || 
+            s.TheLoai.TenTheLoai.ToLower().Contains(keyword)
+        );
     }
+
+    // Thực thi câu lệnh truy vấn và lấy danh sách kết quả
+    var sachList = await sachQuery.ToListAsync();
+
+    return View(sachList);
+
+}
+    
 
     // Thêm sách vào giỏ
     [HttpPost]

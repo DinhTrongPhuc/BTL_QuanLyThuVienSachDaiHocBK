@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BTLNHOM7\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj": {}
+    "C:\\webQLTV\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj": {}
   },
   "projects": {
-    "D:\\BTLNHOM7\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj": {
+    "C:\\webQLTV\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BTLNHOM7\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj",
+        "projectUniqueName": "C:\\webQLTV\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj",
         "projectName": "BTL_NMCNPM_Nhom7",
-        "projectPath": "D:\\BTLNHOM7\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\BTLNHOM7\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\obj\\",
+        "projectPath": "C:\\webQLTV\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\BTL_NMCNPM_Nhom7.csproj",
+        "packagesPath": "C:\\Users\\KINGCOM GAMING\\.nuget\\packages\\",
+        "outputPath": "C:\\webQLTV\\BTL_QuanLyThuVienSachDaiHocBK\\BTL_NMCNPM_Nhom7\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\KINGCOM GAMING\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
