@@ -37,9 +37,18 @@
     </table>
 
     <div class="mt-3">
-        <a asp-action="ExportExcel" asp-route-type="DocGiaQuaHan" class="btn btn-success">
+        @* <a asp-action="BaoCaoTongHop" asp-route-type="DocGiaQuaHan" class="btn btn-success">
             <i class="bi bi-file-earmark-excel"></i> Xuất Excel
         </a>
-        <a asp-action="Index" class="btn btn-secondary">⬅ Trở lại</a>
+        <a asp-action="Index" class="btn btn-secondary">⬅ Trở lại</a> *@
+
+        <a asp-controller="BaoCaoTongHop" asp-action="DocGiaQuaHan" class="btn btn-success">
+            <i class="bi bi-file-earmark-excel"></i> Xuất Excel
+        </a>
+
+        <a asp-action="Index" asp-controller="BaoCaoTongHop" class="btn btn-secondary">
+            ⬅ Trở lại
+        </a>
+
     </div>
 </div>

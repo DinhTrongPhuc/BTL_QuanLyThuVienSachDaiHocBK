@@ -105,3 +105,10 @@ VALUES
 ('Lê Thế C', '2000-01-15', 'Đà Nẵng', '0978123456', 'lethec@example.com', 'lethec', 'MatKhau123'),
 ('Phạm Văn D', '1997-12-05', 'Hải Phòng', '0965432187', 'phamvand@example.com', 'phamvand', 'MatKhau123'),
 ('Nguyễn Thị E', '1999-03-30', 'Cần Thơ', '0932165478', 'nguyenthie@example.com', 'nguyenthie', 'MatKhau123');
+
+ALTER TABLE PhieuMuon
+ADD NgayTra DATETIME NULL,
+    DaTra BIT NULL;
+
+INSERT INTO ThuThu (HoTen, TenDangNhap, MatKhau, QuyenHan)
+VALUES (N'Admin Quản Trị', 'admin', 'admin123', N'Admin');
