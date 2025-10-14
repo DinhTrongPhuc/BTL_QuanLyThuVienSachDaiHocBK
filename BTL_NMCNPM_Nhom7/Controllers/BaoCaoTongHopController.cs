@@ -40,51 +40,53 @@ namespace BTL_NMCNPM_Nhom7.Controllers
 
             return View(data);
         }
-    
 
-        // 2️⃣ Báo cáo Sách quá hạn
-        public async Task<IActionResult> SachQuaHan()
-        {
-            var today = DateTime.Now;
-            var data = await _context.PhieuMuon
-                .Include(p => p.DocGia)
-                .Include(p => p.ChiTietPhieuMuons)
-                .ThenInclude(ct => ct.Sach)
-                .Where(p => p.NgayTra < today && !p.DaTra)
-                .SelectMany(p => p.ChiTietPhieuMuons.Select(ct => new
-                {
-                    MaPhieu = p.MaPhieuMuon,
-                    TenSach = ct.Sach.TenSach,
-                    DocGia = p.DocGia.HoTen,
-                    NgayMuon = p.NgayMuon,
-                    HanTra = p.NgayTra
-                }))
-                .ToListAsync();
 
-            return View(data);
-        }
+		// 2️⃣ Báo cáo Sách quá hạn
+		// Báo cáo sách quá hạn
+		public async Task<IActionResult> SachQuaHan()
+		{
+			var today = DateTime.Now;
+			var data = await _context.PhieuMuon
+				.Include(p => p.DocGia)
+				.Include(p => p.ChiTietPhieuMuons)
+				.ThenInclude(ct => ct.Sach)
+				.Where(p => p.NgayTra < today && p.DaTra == false) // ✅ Sửa
+				.SelectMany(p => p.ChiTietPhieuMuons.Select(ct => new
+				{
+					MaPhieu = p.MaPhieuMuon,
+					TenSach = ct.Sach.TenSach,
+					DocGia = p.DocGia.HoTen,
+					NgayMuon = p.NgayMuon,
+					HanTra = p.NgayTra
+				}))
+				.ToListAsync();
 
-        // 3️⃣ Báo cáo Độc giả quá hạn
-        public async Task<IActionResult> DocGiaQuaHan()
-        {
-            var today = DateTime.Now;
-            var data = await _context.PhieuMuon
-                .Include(p => p.DocGia)
-                .Where(p => p.NgayTra < today && !p.DaTra)
-                .GroupBy(p => p.DocGia.HoTen)
-                .Select(g => new
-                {
-                    DocGia = g.Key,
-                    SoSachQuaHan = g.Count()
-                })
-                .OrderByDescending(x => x.SoSachQuaHan)
-                .ToListAsync();
+			return View(data);
+		}
 
-            return View(data);
-        }
+		// Báo cáo độc giả quá hạn
+		public async Task<IActionResult> DocGiaQuaHan()
+		{
+			var today = DateTime.Now;
+			var data = await _context.PhieuMuon
+				.Include(p => p.DocGia)
+				.Where(p => p.NgayTra < today && p.DaTra == false) // ✅ Sửa giống trên
+				.GroupBy(p => p.DocGia.HoTen)
+				.Select(g => new
+				{
+					DocGia = g.Key,
+					SoSachQuaHan = g.Count()
+				})
+				.OrderByDescending(x => x.SoSachQuaHan)
+				.ToListAsync();
 
-        // 4️⃣ Báo cáo Sách tồn kho
-        public async Task<IActionResult> SachTonKho()
+			return View(data);
+		}
+
+
+		// 4️⃣ Báo cáo Sách tồn kho
+		public async Task<IActionResult> SachTonKho()
         {
             var data = await _context.Sach
                 .Select(s => new
