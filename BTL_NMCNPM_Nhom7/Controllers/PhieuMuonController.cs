@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using YourProject.Data;
 using YourProject.Helpers;
 using YourProject.Models;
 
 namespace YourProject.Controllers
 {
+
 	public class PhieuMuonController : Controller
 	{
 		private readonly LibraryContext _context;
@@ -15,102 +19,136 @@ namespace YourProject.Controllers
 			_context = context;
 		}
 
-
-		public IActionResult Index()
+		[Authorize]
+		public async Task<IActionResult> Index()
 		{
+			var roleClaim = User.FindFirst(ClaimTypes.Role)?.Value;
+
+			if (roleClaim == "Admin")
+			{
+				var phieuMuons = await _context.PhieuMuon
+					.Include(p => p.DocGia)
+					.Include(p => p.ThuThu)
+					.Include(p => p.ChiTietPhieuMuons)
+						.ThenInclude(ct => ct.Sach)
+					.ToListAsync();
+
+				return View("Index", phieuMuons);
+			}
 
 			return RedirectToAction("Create");
-
 		}
 
-		public IActionResult Create()
-		{
-			ViewBag.DocGias = _context.DocGia.ToList();
-			ViewBag.ThuThus = _context.ThuThu.ToList();
-			ViewBag.Sachs = _context.Sach.Where(s => s.SoLuong > 0).ToList();
 
-			ViewBag.Message = TempData["Message"];
-			ViewBag.Error = TempData["Error"];
+
+
+		public async Task<IActionResult> Create()
+		{
+			var userIdClaim = User.FindFirst("UserId");
+			if (userIdClaim == null)
+				return RedirectToAction("Login", "Account");
+
+			int docGiaId = int.Parse(userIdClaim.Value);
+			var docGia = await _context.DocGia.FirstOrDefaultAsync(d => d.Id == docGiaId);
+			if (docGia == null)
+				return RedirectToAction("Login", "Account");
+
+			ViewBag.DocGia = docGia;
+
+			var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart") ?? new List<Sach>();
+			ViewBag.Cart = cart;
+
+			var thuThus = await _context.ThuThu.ToListAsync();
+			ViewBag.ThuThus = new SelectList(thuThus, "MaThuThu", "HoTen");
+
+			return View();
+		}
+
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create(DateTime? NgayHenTra, int MaThuThu, int MaSach)
+		{
+			var userIdClaim = User.FindFirst("UserId");
+			if (userIdClaim == null)
+				return RedirectToAction("Login", "Account");
+
+			int docGiaId = int.Parse(userIdClaim.Value);
+
+			if (NgayHenTra == null)
+			{
+				TempData["ErrorMessage"] = "Vui lòng chọn ngày hẹn trả.";
+				return RedirectToAction("Create");
+			}
+
+			var thuThu = await _context.ThuThu.FindAsync(MaThuThu);
+			if (thuThu == null)
+			{
+				TempData["ErrorMessage"] = "Thủ thư không hợp lệ.";
+				return RedirectToAction("Create");
+			}
+
+			DateTime minSqlDate = new DateTime(1753, 1, 1);
+			DateTime maxSqlDate = new DateTime(9999, 12, 31);
+			DateTime ngayMuonValid = DateTime.Now < minSqlDate ? minSqlDate : DateTime.Now;
+			DateTime ngayHenTraValid = NgayHenTra.Value < minSqlDate ? minSqlDate :
+									   NgayHenTra.Value > maxSqlDate ? maxSqlDate : NgayHenTra.Value;
+
+			var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
+			if (cart == null || !cart.Any())
+			{
+				TempData["ErrorMessage"] = "Giỏ sách trống, không thể tạo phiếu mượn!";
+				return RedirectToAction("Create");
+			}
+
+			var sachChon = cart.FirstOrDefault(s => s.MaSach == MaSach);
+			if (sachChon == null)
+			{
+				TempData["ErrorMessage"] = "Sách không tồn tại trong giỏ.";
+				return RedirectToAction("Create");
+			}
+
+
+			var phieuMuon = new PhieuMuon
+			{
+				MaDocGia = docGiaId,
+				MaThuThu = MaThuThu,
+				NgayMuon = ngayMuonValid,
+				NgayHenTra = ngayHenTraValid,
+				TrangThai = "Chưa trả",
+				DaTra = false
+			};
+			_context.PhieuMuon.Add(phieuMuon);
+			await _context.SaveChangesAsync();
+
+
+			_context.ChiTietPhieuMuon.Add(new ChiTietPhieuMuon
+			{
+				MaPhieuMuon = phieuMuon.MaPhieuMuon,
+				MaSach = sachChon.MaSach
+			});
+			await _context.SaveChangesAsync();
+
+
+			sachChon.SoLuong -= 1;
+			if (sachChon.SoLuong <= 0)
+				cart.Remove(sachChon);
+
+			HttpContext.Session.SetObjectAsJson("Cart", cart);
+
+			ViewBag.SuccessMessage = $"Tạo phiếu mượn thành công cho sách: {sachChon.TenSach}";
+			ViewBag.DocGia = await _context.DocGia.FirstOrDefaultAsync(d => d.Id == docGiaId);
+			ViewBag.Cart = cart;
+			ViewBag.ThuThus = new SelectList(await _context.ThuThu.ToListAsync(), "MaThuThu", "HoTen");
 
 			return View();
 		}
 
 
 
-
-		[HttpPost]
-		public IActionResult Create(int MaDocGia, int MaThuThu, DateTime NgayHenTra, string TrangThai, string MaSachsInput)
-		{
-			try
-			{
-				var phieuMuon = new PhieuMuon
-				{
-					MaDocGia = MaDocGia,
-					MaThuThu = MaThuThu,
-					NgayMuon = DateTime.Now,
-					NgayHenTra = NgayHenTra,
-					TrangThai = TrangThai
-				};
-
-				_context.PhieuMuon.Add(phieuMuon);
-				_context.SaveChanges();
-
-				var maSachs = MaSachsInput
-				.Split(',')
-				.Select(s => s.Trim())
-				.Where(s => int.TryParse(s, out _))
-				.Select(int.Parse)
-				.ToList();
-
-				foreach (var maSach in maSachs)
-				{
-					var sach = _context.Sach.Find(maSach);
-					if (sach != null) // bỏ điều kiện SoLuong nếu muốn hiển thị sách luôn
-					{
-						if (sach.SoLuong > 0)
-						{
-							sach.SoLuong -= 1;
-						}
-
-						_context.ChiTietPhieuMuon.Add(new ChiTietPhieuMuon
-						{
-							MaPhieuMuon = phieuMuon.MaPhieuMuon,
-							MaSach = maSach
-						});
-					}
-				}
-
-				_context.SaveChanges();
-
-				var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
-				if (cart != null)
-				{
-					cart.RemoveAll(s => maSachs.Contains(s.MaSach));
-					HttpContext.Session.SetObjectAsJson("Cart", cart); // Cập nhật lại giỏ
-				}
-
-				TempData["Message"] = "Tạo phiếu mượn thành công!";
-				return RedirectToAction("Index"); // Quay về danh sách yêu cầu
-			}
-			catch (Exception ex)
-			{
-				TempData["Error"] = "Lỗi khi tạo phiếu: " + ex.Message;
-				return RedirectToAction("Index1");
-			}
-		}
+		// Danh sách phiếu mượn
 
 
-		public IActionResult DanhSach()
-		{
-			var danhSach = _context.PhieuMuon
-				.Include(p => p.DocGia)
-				.Include(p => p.ThuThu)
-				.Include(p => p.ChiTietPhieuMuons)
-				.ThenInclude(c => c.Sach)
-				.ToList();
-
-			return View("Index", danhSach);
-		}
 
 
 
@@ -197,3 +235,6 @@ namespace YourProject.Controllers
 		}
 	}
 }
+
+
+

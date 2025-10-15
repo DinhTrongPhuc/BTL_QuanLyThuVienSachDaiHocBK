@@ -94,27 +94,31 @@
 
 <h2>Danh sách Phiếu Mượn</h2>
 
-@{
-    var message = TempData["Message"] as string;
-}
-@if (!string.IsNullOrEmpty(message))
-{
-    <div id="tempMessage"
-         style="position: fixed; top: 20px; right: 20px; background-color: #d4edda;
-                            color: #155724; padding: 15px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1000;">
-        @message
-    </div>
 
-    <script>
-        // Ẩn thông báo sau 2.5 giây (2500ms)
-        setTimeout(function() {
-            var msg = document.getElementById('tempMessage');
-            if (msg) {
-                msg.style.display = 'none';
-            }
-        }, 2500);
-    </script>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="tempMessage" class="success" style="position: fixed; top: 20px; right: 20px;
+             background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1000;">
+        @TempData["SuccessMessage"]
+    </div>
 }
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div id="tempMessage" class="error" style="position: fixed; top: 20px; right: 20px;
+             background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1000;">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<script>
+    setTimeout(function () {
+        var msg = document.getElementById('tempMessage');
+        if (msg) { msg.style.display = 'none'; }
+    }, 2500);
+</script>
 
 <table>
     <thead>
@@ -127,38 +131,44 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var pm in Model)
+        @if (Model != null && Model.Any())
+        {
+            foreach (var pm in Model)
+            {
+                <tr>
+                    <td>@pm.MaPhieuMuon</td>
+                    <td>@pm.DocGia?.HoTen</td>
+                    <td>@pm.ThuThu?.HoTen</td>
+                    <td>
+                        @if (pm.ChiTietPhieuMuons != null && pm.ChiTietPhieuMuons.Any())
+                        {
+                            <ul class="sach-list">
+                                @foreach (var ct in pm.ChiTietPhieuMuons)
+                                {
+                                    <li>@ct.Sach?.TenSach</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span>Không có sách</span>
+                        }
+                    </td>
+                    <td>
+                        <button type="button" class="xem-btn" onclick="xemChiTiet(@pm.MaPhieuMuon)">Xem</button>
+                        <button class="btn-danger" onclick="deletePhieu(@pm.MaPhieuMuon)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@pm.MaPhieuMuon</td>
-                <td>@pm.DocGia?.HoTen</td>
-                <td>@pm.ThuThu?.HoTen</td>
-
-
-                <td>
-                    @if (pm.ChiTietPhieuMuons != null && pm.ChiTietPhieuMuons.Any())
-                    {
-                        <ul class="sach-list">
-                            @foreach (var ct in pm.ChiTietPhieuMuons)
-                            {
-                                <li>@ct.Sach?.TenSach</li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <span>Không có sách</span>
-                    }
-                </td>
-                <td>
-                    <button type="button" class="xem-btn" onclick="xemChiTiet(@pm.MaPhieuMuon)">Xem</button>
-                    <button class="btn-danger" onclick="deletePhieu(@pm.MaPhieuMuon)">Xóa</button>
-                </td>
+                <td colspan="5" style="text-align:center;">Chưa có phiếu mượn nào</td>
             </tr>
         }
     </tbody>
 </table>
-
 
 <div id="hopChiTiet" style="
     display: none;
@@ -180,7 +190,7 @@
     ">
         <h3 style="text-align:center;">Chi tiết phiếu mượn</h3>
         <div id="noiDungChiTiet">
-            <!-- Dữ liệu chi tiết sẽ được load bằng AJAX -->
+           
         </div>
         <div style="text-align:center;">
             <button onclick="dongHopChiTiet()" style="margin-top: 10px; padding: 6px 12px;">Đóng</button>

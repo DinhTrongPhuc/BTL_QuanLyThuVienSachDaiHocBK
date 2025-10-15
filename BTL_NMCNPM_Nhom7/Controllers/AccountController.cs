@@ -121,6 +121,7 @@ public async Task<IActionResult> Login(string tenDangNhap, string matKhau)
     
     ViewBag.Error = "Tên đăng nhập hoặc mật khẩu không đúng.";
     return View();
+    
 }
 
 public async Task<IActionResult> Logout()
