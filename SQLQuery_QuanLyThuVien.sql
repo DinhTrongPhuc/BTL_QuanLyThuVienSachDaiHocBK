@@ -112,3 +112,5 @@ ADD NgayTra DATETIME NULL,
 
 INSERT INTO ThuThu (HoTen, TenDangNhap, MatKhau, QuyenHan)
 VALUES (N'Admin Quản Trị', 'admin', 'admin123', N'Admin');
+
+Select * from PhieuMuon

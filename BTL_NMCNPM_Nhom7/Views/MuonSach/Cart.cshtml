@@ -1,5 +1,26 @@
 @model List<YourProject.Models.Sach>
 
+@{
+    Layout = null; // Không sử dụng _Layout.cshtml
+}
+
+<div style="width: 100%; background-color: #28a745; padding: 10px 20px; display:flex; justify-content: flex-end; gap: 10px; box-sizing:border-box;">
+    <button onclick="window.location.href='@Url.Action("Create", "PhieuMuon")'" 
+            style="background-color:#ffc107; color:#000; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
+        Phiếu Mượn
+    </button>
+
+        <button onclick="window.location.href='@Url.Action("Index", "MuonSach")'" 
+            style="background-color:#ffc107; color:#000; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
+        Phiếu Mượn
+    </button>
+
+    <button onclick="window.location.href='@Url.Action("Logout", "Account")'" 
+            style="background-color:#dc3545; color:white; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
+        Đăng xuất
+    </button>
+</div>
+
 <div class="container mt-3">
     <h2>Giỏ mượn</h2>
 
@@ -31,8 +52,13 @@
             </tbody>
         </table>
 
-        <form asp-action="ConfirmBorrow" method="post">
+        <a href="@Url.Action("Create", "PhieuMuon")" class="btn btn-success">
+    Xác nhận mượn sách
+</a>
+
+
+        @* <form asp-action="ConfirmBorrow" method="post">
             <button type="submit" class="btn btn-success">Xác nhận mượn sách</button>
-        </form>
+        </form> *@
     }
 </div>

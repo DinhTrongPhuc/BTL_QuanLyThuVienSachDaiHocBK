@@ -1,10 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Tạo Phiếu Mượn";
+    Layout = null; // Không sử dụng _Layout.cshtml
     var docGia = ViewBag.DocGia;
     var cart = ViewBag.Cart as List<YourProject.Models.Sach>;
     var thuThus = ViewBag.ThuThus as SelectList;
     var successMessage = ViewBag.SuccessMessage as string;
 }
+<!-- Thanh điều hướng trên cùng -->
+<div style="width: 100%; background-color: #28a745; padding: 10px 20px; display:flex; justify-content: flex-end; gap: 10px; box-sizing:border-box;">
+    <button onclick="window.location.href='@Url.Action("Cart", "MuonSach")'" 
+            style="background-color:#ffc107; color:#000; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
+        Quay về giỏ hàng
+    </button>
+
+    <button onclick="window.location.href='@Url.Action("Logout", "Account")'" 
+            style="background-color:#dc3545; color:white; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
+        Đăng xuất
+    </button>
+</div>
+
 
 <style>
     body {
@@ -106,23 +120,28 @@
         </select>
     </div>
 
-    <div>
-        <label>Sách trong giỏ mượn:</label>
-        @if (cart != null && cart.Any())
-        {
-            <select name="MaSach" required>
-                <option value="">-- Chọn sách mượn --</option>
-                @foreach (var sach in cart)
-                {
-                    <option value="@sach.MaSach">@sach.TenSach</option>
-                }
-            </select>
-        }
-        else
-        {
-            <p>Giỏ sách trống. Vui lòng thêm sách trước khi tạo phiếu mượn.</p>
-        }
-    </div>
+<div>
+    <label>Sách trong giỏ mượn:</label>
+    @if (cart != null && cart.Any())
+    {
+        <ul style="list-style:none; padding-left:0; max-height:200px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            @foreach (var sach in cart)
+            {
+                <li>
+                    <input type="checkbox" name="MaSachList" value="@sach.MaSach" id="sach_@sach.MaSach" />
+                    <label for="sach_@sach.MaSach">@sach.TenSach (Còn @sach.SoLuong)</label>
+                </li>
+            }
+        </ul>
+        <small>Chọn một hoặc nhiều sách.</small>
+    }
+    else
+    {
+        <p>Giỏ sách trống. Vui lòng thêm sách trước khi tạo phiếu mượn.</p>
+    }
+</div>
+
+
 
     <button type="submit" @(cart == null || !cart.Any() ? "disabled" : "")>Tạo Phiếu Mượn</button>
 </form>
