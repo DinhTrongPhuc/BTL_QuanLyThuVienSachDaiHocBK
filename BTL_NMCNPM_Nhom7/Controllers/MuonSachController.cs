@@ -62,19 +62,19 @@ public async Task<IActionResult> Index(string searchString)
         return View(cart);
     }
 
-    // Xác nhận mượn
-    [HttpPost]
-    public IActionResult ConfirmBorrow()
-    {
-        var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
-        if (cart == null || !cart.Any())
-        {
-            TempData["ErrorMessage"] = "Giỏ mượn trống!";
-            return RedirectToAction("Index");
-        }
+    // // Xác nhận mượn
+    // [HttpPost]
+    // public IActionResult ConfirmBorrow()
+    // {
+    //     var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
+    //     if (cart == null || !cart.Any())
+    //     {
+    //         TempData["ErrorMessage"] = "Giỏ mượn trống!";
+    //         return RedirectToAction("Index");
+    //     }
 
-        HttpContext.Session.Remove("Cart");
-        TempData["SuccessMessage"] = "Mượn sách thành công!";
-        return RedirectToAction("Index");
-    }
+    //     HttpContext.Session.Remove("Cart");
+    //     TempData["SuccessMessage"] = "Mượn sách thành công!";
+    //     return RedirectToAction("Index");
+    // }
 }

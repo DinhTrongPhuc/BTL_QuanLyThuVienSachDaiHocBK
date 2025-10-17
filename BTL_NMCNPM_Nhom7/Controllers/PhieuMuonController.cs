@@ -65,92 +65,85 @@ namespace YourProject.Controllers
 		}
 
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create(DateTime? NgayHenTra, int MaThuThu, int MaSach)
-		{
-			var userIdClaim = User.FindFirst("UserId");
-			if (userIdClaim == null)
-				return RedirectToAction("Login", "Account");
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Create(DateTime? NgayHenTra, int MaThuThu, List<int> MaSachList)
+{
+    var userIdClaim = User.FindFirst("UserId");
+    if (userIdClaim == null)
+        return RedirectToAction("Login", "Account");
 
-			int docGiaId = int.Parse(userIdClaim.Value);
+    int docGiaId = int.Parse(userIdClaim.Value);
 
-			if (NgayHenTra == null)
-			{
-				TempData["ErrorMessage"] = "Vui lòng chọn ngày hẹn trả.";
-				return RedirectToAction("Create");
-			}
+    if (NgayHenTra == null)
+    {
+        TempData["ErrorMessage"] = "Vui lòng chọn ngày hẹn trả.";
+        return RedirectToAction("Create");
+    }
 
-			var thuThu = await _context.ThuThu.FindAsync(MaThuThu);
-			if (thuThu == null)
-			{
-				TempData["ErrorMessage"] = "Thủ thư không hợp lệ.";
-				return RedirectToAction("Create");
-			}
+    var thuThu = await _context.ThuThu.FindAsync(MaThuThu);
+    if (thuThu == null)
+    {
+        TempData["ErrorMessage"] = "Thủ thư không hợp lệ.";
+        return RedirectToAction("Create");
+    }
 
-			DateTime minSqlDate = new DateTime(1753, 1, 1);
-			DateTime maxSqlDate = new DateTime(9999, 12, 31);
-			DateTime ngayMuonValid = DateTime.Now < minSqlDate ? minSqlDate : DateTime.Now;
-			DateTime ngayHenTraValid = NgayHenTra.Value < minSqlDate ? minSqlDate :
-									   NgayHenTra.Value > maxSqlDate ? maxSqlDate : NgayHenTra.Value;
+    var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
+    if (cart == null || !cart.Any())
+    {
+        TempData["ErrorMessage"] = "Giỏ sách trống, không thể tạo phiếu mượn!";
+        return RedirectToAction("Create");
+    }
 
-			var cart = HttpContext.Session.GetObjectFromJson<List<Sach>>("Cart");
-			if (cart == null || !cart.Any())
-			{
-				TempData["ErrorMessage"] = "Giỏ sách trống, không thể tạo phiếu mượn!";
-				return RedirectToAction("Create");
-			}
+    // Tạo phiếu mượn mới
+    var phieuMuon = new PhieuMuon
+    {
+        MaDocGia = docGiaId,
+        MaThuThu = MaThuThu,
+        NgayMuon = DateTime.Now,
+        NgayHenTra = NgayHenTra.Value,
+        TrangThai = "Chưa trả",
+        DaTra = false
+    };
+    _context.PhieuMuon.Add(phieuMuon);
+    await _context.SaveChangesAsync();
 
-			var sachChon = cart.FirstOrDefault(s => s.MaSach == MaSach);
-			if (sachChon == null)
-			{
-				TempData["ErrorMessage"] = "Sách không tồn tại trong giỏ.";
-				return RedirectToAction("Create");
-			}
+    // Duyệt qua danh sách sách được chọn
+    foreach (var maSach in MaSachList)
+    {
+        var sachChon = cart.FirstOrDefault(s => s.MaSach == maSach);
+        if (sachChon != null)
+        {
+            // Thêm chi tiết phiếu mượn
+            _context.ChiTietPhieuMuon.Add(new ChiTietPhieuMuon
+            {
+                MaPhieuMuon = phieuMuon.MaPhieuMuon,
+                MaSach = sachChon.MaSach
+            });
 
+            // Giảm số lượng sách
+            sachChon.SoLuong -= 1;
+        }
+    }
 
-			var phieuMuon = new PhieuMuon
-			{
-				MaDocGia = docGiaId,
-				MaThuThu = MaThuThu,
-				NgayMuon = ngayMuonValid,
-				NgayHenTra = ngayHenTraValid,
-				TrangThai = "Chưa trả",
-				DaTra = false
-			};
-			_context.PhieuMuon.Add(phieuMuon);
-			await _context.SaveChangesAsync();
+    // Cập nhật lại giỏ: loại bỏ những sách có số lượng = 0
+    cart.RemoveAll(s => s.SoLuong <= 0);
+    HttpContext.Session.SetObjectAsJson("Cart", cart);
 
+    await _context.SaveChangesAsync();
 
-			_context.ChiTietPhieuMuon.Add(new ChiTietPhieuMuon
-			{
-				MaPhieuMuon = phieuMuon.MaPhieuMuon,
-				MaSach = sachChon.MaSach
-			});
-			await _context.SaveChangesAsync();
+    ViewBag.SuccessMessage = $"Tạo phiếu mượn thành công cho {MaSachList.Count} sách.";
+    ViewBag.DocGia = await _context.DocGia.FirstOrDefaultAsync(d => d.Id == docGiaId);
+    ViewBag.Cart = cart;
+    ViewBag.ThuThus = new SelectList(await _context.ThuThu.ToListAsync(), "MaThuThu", "HoTen");
 
+    return View();
+}
 
-			sachChon.SoLuong -= 1;
-			if (sachChon.SoLuong <= 0)
-				cart.Remove(sachChon);
-
-			HttpContext.Session.SetObjectAsJson("Cart", cart);
-
-			ViewBag.SuccessMessage = $"Tạo phiếu mượn thành công cho sách: {sachChon.TenSach}";
-			ViewBag.DocGia = await _context.DocGia.FirstOrDefaultAsync(d => d.Id == docGiaId);
-			ViewBag.Cart = cart;
-			ViewBag.ThuThus = new SelectList(await _context.ThuThu.ToListAsync(), "MaThuThu", "HoTen");
-
-			return View();
-		}
 
 
 
 		// Danh sách phiếu mượn
-
-
-
-
 
 		[HttpGet]
 		public IActionResult ChiTiet(int id)
