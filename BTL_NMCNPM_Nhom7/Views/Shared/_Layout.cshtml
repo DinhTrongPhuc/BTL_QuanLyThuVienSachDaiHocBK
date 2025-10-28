@@ -66,21 +66,7 @@
             <li><a asp-controller="Home" asp-action="Index"><i class="bi bi-speedometer2"></i> <span>Dashboard</span></a></li>
             <li><a asp-controller="Sach" asp-action="Index"><i class="bi bi-book"></i> <span>Quản lý Sách</span></a></li>
             <li><a asp-controller="DocGia" asp-action="MainHome"><i class="bi bi-people"></i> <span>Quản lý Độc Giả</span></a></li>
-            @{
-                var role = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value;
-            }
-            @if (role == "Admin")
-            {
-                <li>
-                    <a asp-controller="PhieuMuon" asp-action="Index"><i class="bi bi-journal-text"></i> <span>Quản lý Phiếu mượn</span></a>
-                </li>
-            }
-            else if (role == "DocGia")
-            {
-                <li>
-                    <a asp-controller="PhieuMuon" asp-action="Create"><i class="bi bi-journal-text"></i> <span>Quản lý Phiếu mượn</span></a>
-                </li>
-            }
+                  <li><a asp-controller="PhieuMuon" asp-action="Index"><i class="bi bi-journal-text"></i> <span>Quản lý Phiếu mượn</span></a></li>
 
             <li><a asp-controller="BaoCaoTongHop" asp-action="Index"><i class="bi bi-bar-chart"></i> <span>Báo cáo thống kê</span></a></li>
             <li><a asp-controller="Home" asp-action="Index"><i class="bi bi-people"></i> <span>Quản lý Thủ Thư</span></a></li>

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using YourProject.Data;
+using YourProject.ViewModels;
 
 namespace BTL_NMCNPM_Nhom7.Controllers
 {
@@ -42,47 +43,61 @@ namespace BTL_NMCNPM_Nhom7.Controllers
         }
 
 
-		// 2️⃣ Báo cáo Sách quá hạn
-		// Báo cáo sách quá hạn
-		public async Task<IActionResult> SachQuaHan()
-		{
-			var today = DateTime.Now;
-			var data = await _context.PhieuMuon
-				.Include(p => p.DocGia)
-				.Include(p => p.ChiTietPhieuMuons)
-				.ThenInclude(ct => ct.Sach)
-				.Where(p => p.NgayTra < today && p.DaTra == false) // ✅ Sửa
-				.SelectMany(p => p.ChiTietPhieuMuons.Select(ct => new
-				{
-					MaPhieu = p.MaPhieuMuon,
-					TenSach = ct.Sach.TenSach,
-					DocGia = p.DocGia.HoTen,
-					NgayMuon = p.NgayMuon,
-					HanTra = p.NgayTra
-				}))
-				.ToListAsync();
+        // 2️⃣ Báo cáo Sách quá hạn
+        // Báo cáo sách quá hạn
+        public async Task<IActionResult> SachQuaHan()
+        {
+            var today = DateTime.Today; // Dùng DateTime.Today để so sánh ngày
 
-			return View(data);
-		}
+            // Truy vấn từ ChiTietPhieuMuon là đúng, vì mỗi hàng đại diện cho 1 cuốn sách đang mượn
+            var data = await _context.ChiTietPhieuMuon
+                // 1. Chỉ lấy những cuốn sách chưa được trả
+                .Where(ct => ct.NgayTra == null)
+                // 2. Và có ngày hẹn trả đã qua
+                .Where(ct => ct.PhieuMuon.NgayHenTra < today)
+                // 3. Lấy kèm thông tin liên quan
+                .Include(ct => ct.Sach)
+                .Include(ct => ct.PhieuMuon)
+                    .ThenInclude(p => p.DocGia)
+                // 4. Chuyển đổi sang ViewModel để hiển thị
+                .Select(ct => new SachQuaHanViewModel
+                {
+                    TenSach = ct.Sach.TenSach,
+                    TenDocGia = ct.PhieuMuon.DocGia.HoTen,
+                    NgayMuon = ct.PhieuMuon.NgayMuon,
+                    NgayHenTra = ct.PhieuMuon.NgayHenTra,
+                    SoNgayTre = (today - ct.PhieuMuon.NgayHenTra).Days
+                })
+                .ToListAsync();
+
+            return View(data);
+        }
 
 		// Báo cáo độc giả quá hạn
-		public async Task<IActionResult> DocGiaQuaHan()
-		{
-			var today = DateTime.Now;
-			var data = await _context.PhieuMuon
-				.Include(p => p.DocGia)
-				.Where(p => p.NgayTra < today && p.DaTra == false) // ✅ Sửa giống trên
-				.GroupBy(p => p.DocGia.HoTen)
-				.Select(g => new
-				{
-					DocGia = g.Key,
-					SoSachQuaHan = g.Count()
-				})
-				.OrderByDescending(x => x.SoSachQuaHan)
-				.ToListAsync();
+        public async Task<IActionResult> DocGiaQuaHan()
+{
+    var today = DateTime.Today;
 
-			return View(data);
-		}
+    var data = await _context.ChiTietPhieuMuon
+        // 1. Chỉ lấy những cuốn sách chưa được trả
+        .Where(ct => ct.NgayTra == null)
+        // 2. Và có ngày hẹn trả đã qua
+        .Where(ct => ct.PhieuMuon.NgayHenTra < today)
+        // 3. Lấy kèm thông tin Độc giả
+        .Include(ct => ct.PhieuMuon.DocGia)
+        // 4. Nhóm các bản ghi lại theo Tên Độc giả
+        .GroupBy(ct => ct.PhieuMuon.DocGia.HoTen)
+        // 5. Chuyển đổi sang ViewModel để hiển thị
+        .Select(group => new DocGiaQuaHanViewModel
+        {
+            TenDocGia = group.Key,
+            SoSachQuaHan = group.Count() // Đếm số sách quá hạn của mỗi độc giả
+        })
+        .OrderByDescending(result => result.SoSachQuaHan) // Sắp xếp theo số sách quá hạn nhiều nhất
+        .ToListAsync();
+
+    return View(data);
+}
 
 
 		// 4️⃣ Báo cáo Sách tồn kho

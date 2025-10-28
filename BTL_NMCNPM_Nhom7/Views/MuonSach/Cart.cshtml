@@ -1,64 +1,46 @@
-@model List<YourProject.Models.Sach>
+@model List<YourProject.ViewModels.CartItem>
 
 @{
-    Layout = null; // Không sử dụng _Layout.cshtml
+    ViewData["Title"] = "Giỏ mượn sách";
+    Layout = "_GuestLayout";
 }
 
-<div style="width: 100%; background-color: #28a745; padding: 10px 20px; display:flex; justify-content: flex-end; gap: 10px; box-sizing:border-box;">
-    <button onclick="window.location.href='@Url.Action("Create", "PhieuMuon")'" 
-            style="background-color:#ffc107; color:#000; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
-        Phiếu Mượn
-    </button>
+<h1>@ViewData["Title"]</h1>
 
-        <button onclick="window.location.href='@Url.Action("Index", "MuonSach")'" 
-            style="background-color:#ffc107; color:#000; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
-        List Sách
-    </button>
-
-    <button onclick="window.location.href='@Url.Action("Logout", "Account")'" 
-            style="background-color:#dc3545; color:white; font-weight:bold; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">
-        Đăng xuất
-    </button>
-</div>
-
-<div class="container mt-3">
-    <h2>Giỏ mượn</h2>
-
-    @if (!Model.Any())
-    {
-        <p>Giỏ mượn trống.</p>
-    }
-    else
-    {
-        <table class="table table-bordered table-striped">
-            <thead class="table-info">
+@if (Model.Any())
+{
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Tên sách</th>
+                <th>Tác giả</th>
+                <th style="width: 120px;">Số lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>Tên sách</th>
-                    <th>Tác giả</th>
-                    <th>Thể loại</th>
-                    <th>Năm xuất bản</th>
+                    <td>@item.TenSach</td>
+                    <td>@item.TacGia</td>
+                    <td>
+                       @item.SoLuong
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var s in Model)
-                {
-                    <tr>
-                        <td>@s.TenSach</td>
-                        <td>@s.TacGia?.TenTacGia</td>
-                        <td>@s.TheLoai?.TenTheLoai</td>
-                        <td>@s.NamXuatBan</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            }
+        </tbody>
+    </table>
 
-        <a href="@Url.Action("Create", "PhieuMuon")" class="btn btn-success">
-    Xác nhận mượn sách
-</a>
-
-
-        @* <form asp-action="ConfirmBorrow" method="post">
-            <button type="submit" class="btn btn-success">Xác nhận mượn sách</button>
-        </form> *@
-    }
-</div>
+    <div class="mt-4">
+        <form asp-controller="MuonSach" asp-action="ConfirmBorrow" method="post">
+            <button type="submit" class="btn btn-primary">Xác nhận mượn tất cả</button>
+            <a asp-controller="MuonSach" asp-action="Index" class="btn btn-secondary">Quay lại chọn sách</a>
+        </form>
+    </div>
+}
+else
+{
+    <div class="alert alert-info mt-4">
+        <p>Giỏ mượn của bạn đang trống.</p>
+    </div>
+}

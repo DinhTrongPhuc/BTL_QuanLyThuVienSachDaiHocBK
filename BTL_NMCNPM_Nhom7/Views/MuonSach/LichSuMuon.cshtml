@@ -1,0 +1,47 @@
+@model IEnumerable<YourProject.Models.PhieuMuon>
+
+@{
+    ViewData["Title"] = "Lịch sử mượn sách";
+    Layout = "_GuestLayout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Any())
+{
+    @foreach (var phieu in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between">
+                <strong>Phiếu mượn #@phieu.MaPhieuMuon</strong>
+                <span>Ngày mượn: @phieu.NgayMuon.ToString("dd/MM/yyyy")</span>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Trạng thái: @phieu.TrangThai</h5>
+                
+                <p class="card-text">Danh sách sách đã mượn:</p>
+                <ul class="list-group list-group-flush">
+                    @foreach (var detail in phieu.ChiTietPhieuMuons)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            @detail.Sach?.TenSach
+                         </li>
+                    }
+                </ul>
+            </div>
+            <div class="card-footer text-end">
+                @if (phieu.TrangThai == "Đang mượn")
+                {
+                    <form asp-action="YeuCauTraSach" method="post">
+                        <input type="hidden" name="maPhieuMuon" value="@phieu.MaPhieuMuon" />
+                        <button type="submit" class="btn btn-primary">Yêu cầu trả sách</button>
+                    </form>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>Bạn chưa có lịch sử mượn sách nào.</p>
+}

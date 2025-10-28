@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YourProject.Models
-{
-    public class ChiTietPhieuMuon
+{public class ChiTietPhieuMuon
     {
         public int MaPhieuMuon { get; set; }
         public int MaSach { get; set; }
         
-        public DateTime? NgayTra { get; set; }
+        public DateTime? NgayTra { get; set; } // This is the correct location
         public decimal TienPhat { get; set; }
         public string? GhiChu { get; set; }
 

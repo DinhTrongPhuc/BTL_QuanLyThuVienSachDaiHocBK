@@ -1,0 +1,63 @@
+@model YourProject.Models.PhieuMuon
+
+@{
+    ViewData["Title"] = "Chi tiết Phiếu mượn";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <h4>Thông tin chung</h4>
+    <dl class="row">
+        <dt class="col-sm-2">ID Phiếu:</dt>
+        <dd class="col-sm-10">@Model.MaPhieuMuon</dd>
+
+        <dt class="col-sm-2">Độc giả:</dt>
+        <dd class="col-sm-10">@Model.DocGia?.HoTen</dd>
+
+        <dt class="col-sm-2">Thủ thư:</dt>
+        <dd class="col-sm-10">@Model.ThuThu?.HoTen</dd>
+
+        <dt class="col-sm-2">Ngày mượn:</dt>
+        <dd class="col-sm-10">@Model.NgayMuon.ToString("dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-2">Ngày hẹn trả:</dt>
+        <dd class="col-sm-10">@Model.NgayHenTra.ToString("dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-2">Trạng thái:</dt>
+        <dd class="col-sm-10">@Model.TrangThai</dd>
+    </dl>
+</div>
+
+<hr />
+
+<h4>Danh sách sách đã mượn</h4>
+@if (Model.ChiTietPhieuMuons != null && Model.ChiTietPhieuMuons.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã sách</th>
+                <th>Tên sách</th>
+                <th>Số lượng</th>  </tr>
+        </thead>
+        <tbody>
+            @foreach (var detail in Model.ChiTietPhieuMuons)
+            {
+                <tr>
+                    <td>@detail.Sach?.MaSach</td>
+                    <td>@detail.Sach?.TenSach</td>
+                    <td>1</td>  </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Không có sách nào trong phiếu mượn này.</p>
+}
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+</div>
